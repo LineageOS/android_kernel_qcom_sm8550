@@ -4121,10 +4121,9 @@ static int __maybe_unused arm_smmu_pm_restore_early(struct device *dev)
 		smmu_domain->pgtbl_ops = pgtbl_ops;
 		arm_smmu_init_context_bank(smmu_domain, pgtbl_cfg);
 	}
-	arm_smmu_pm_resume_common(dev);
-	ret = arm_smmu_runtime_suspend(dev);
+	ret = arm_smmu_pm_resume_common(dev);
 	if (ret) {
-		dev_err(dev, "Failed to suspend\n");
+		dev_err(dev, "Failed to resume\n");
 		return ret;
 	}
 	return 0;
@@ -4135,7 +4134,7 @@ static int __maybe_unused arm_smmu_pm_freeze_late(struct device *dev)
 	struct arm_smmu_device *smmu = dev_get_drvdata(dev);
 	struct arm_smmu_domain *smmu_domain;
 	struct arm_smmu_cb *cb;
-	int idx;
+	int idx, ret;
 
 	for (idx = 0; idx < smmu->num_context_banks; idx++) {
 		cb = &smmu->cbs[idx];
@@ -4146,6 +4145,11 @@ static int __maybe_unused arm_smmu_pm_freeze_late(struct device *dev)
 				qcom_free_io_pgtable_ops(smmu_domain->pgtbl_ops);
 			}
 		}
+	}
+	ret = arm_smmu_runtime_suspend(dev);
+	if (ret) {
+		dev_err(dev, "Failed to suspend\n");
+		return ret;
 	}
 	return 0;
 }
@@ -4175,7 +4179,7 @@ static int __maybe_unused arm_smmu_pm_suspend(struct device *dev)
 	struct arm_smmu_device *smmu = dev_get_drvdata(dev);
 
 	if (pm_suspend_via_firmware())
-		arm_smmu_pm_freeze_late(dev);
+		return arm_smmu_pm_freeze_late(dev);
 
 	if (pm_runtime_suspended(dev))
 		goto clk_unprepare;
