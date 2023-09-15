@@ -320,8 +320,13 @@ endif
 
 DTC_FLAGS += $(DTC_FLAGS_$(basetarget))
 
+ifeq ($(CONFIG_ARCH_QCOM),y)
+# Forcibly set -@ for all DTB[O]s in case of QCOM targets
+DTC_FLAGS += -@
+else
 # Set -@ if the target is a base DTB that overlay is applied onto
 DTC_FLAGS += $(if $(filter $(patsubst $(obj)/%,%,$@), $(base-dtb-y)), -@)
+endif
 
 # Generate an assembly file to wrap the output of the device tree compiler
 quiet_cmd_dt_S_dtb= DTB     $@
