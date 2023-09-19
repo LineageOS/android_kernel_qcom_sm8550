@@ -455,8 +455,12 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_look_around_migrate_page);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_test_clear_look_around_ref);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_set_page_migrating);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_clear_page_migrating);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_cma_alloc_bypass);
 /*
  * For type visibility
  */
 const struct readahead_control *GKI_struct_readahead_control;
 EXPORT_SYMBOL_GPL(GKI_struct_readahead_control);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_exit_signal_whether_wake);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_exit_check);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_freeze_whether_wake);
