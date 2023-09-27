@@ -213,6 +213,15 @@ struct remote_buf {
 	size_t len;		/* length of buffer */
 };
 
+/* structure to hold fd and size of buffer shared with DSP,
+ * which contains initial debug parameters that needs to be passed
+ * during process initialization.
+ */
+struct fastrpc_proc_sharedbuf_info {
+	int buf_fd;
+	int buf_size;
+};
+
 struct remote_dma_handle {
 	int fd;
 	uint32_t offset;
@@ -310,6 +319,7 @@ enum fastrpc_invoke2_type {
 	FASTRPC_INVOKE2_ASYNC_RESPONSE = 2,
 	FASTRPC_INVOKE2_KERNEL_OPTIMIZATIONS,
 	FASTRPC_INVOKE2_STATUS_NOTIF,
+	FASTRPC_INVOKE2_PROC_SHAREDBUF_INFO,
 };
 
 struct fastrpc_ioctl_invoke2 {
@@ -1119,6 +1129,12 @@ struct fastrpc_file {
 	bool exit_notif;
 	/* Flag to indicate async thread exit requested*/
 	bool exit_async;
+	/*
+	 * structure to hold fd and size of buffer shared with DSP,
+	 * which contains initial debug configurations and other initial
+	 * config parameters.
+	 */
+	struct fastrpc_proc_sharedbuf_info sharedbuf_info;
 };
 
 union fastrpc_ioctl_param {
