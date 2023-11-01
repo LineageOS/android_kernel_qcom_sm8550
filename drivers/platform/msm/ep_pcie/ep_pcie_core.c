@@ -302,7 +302,7 @@ static int ep_pcie_reset_init(struct ep_pcie_dev_t *dev)
 			"PCIe V%d: successfully asserted reset for %s\n",
 				dev->rev, reset_info->name);
 		}
-		EP_PCIE_ERR(dev, "After Reset assert %s\n",
+		EP_PCIE_DBG(dev, "After Reset assert %s\n",
 						reset_info->name);
 		/* add a 1ms delay to ensure the reset is asserted */
 		usleep_range(1000, 1005);
@@ -325,7 +325,7 @@ static int ep_pcie_reset_init(struct ep_pcie_dev_t *dev)
 			"PCIe V%d: successfully deasserted reset for %s\n",
 				dev->rev, reset_info->name);
 		}
-		EP_PCIE_ERR(dev, "After Reset de-assert %s\n",
+		EP_PCIE_DBG(dev, "After Reset de-assert %s\n",
 						reset_info->name);
 	}
 	return 0;
@@ -2306,7 +2306,7 @@ int ep_pcie_core_enable_endpoint(enum ep_pcie_options opt)
 		ep_pcie_clk_dump(dev);
 		goto link_fail_pipe_clk_deinit;
 	} else {
-		EP_PCIE_INFO(dev, "PCIe V%d: PCIe  PHY is ready\n", dev->rev);
+		EP_PCIE_DBG(dev, "PCIe V%d: PCIe  PHY is ready\n", dev->rev);
 	}
 
 	ep_pcie_core_init(dev, false);
