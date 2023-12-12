@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
@@ -264,7 +264,12 @@ static int gh_vcpu_release(struct inode *inode, struct file *filp)
 {
 	struct gh_vcpu *vcpu = filp->private_data;
 
-	gh_put_vm(vcpu->vm);
+	/* need to create workqueue if critical vm */
+	if (vcpu->vm->keep_running)
+		gh_vcpu_create_wq(vcpu->vm->vmid, vcpu->vcpu_id);
+	else
+		gh_put_vm(vcpu->vm);
+
 	return 0;
 }
 
@@ -453,7 +458,9 @@ int gh_reclaim_mem(struct gh_vm *vm, phys_addr_t phys,
 
 	ret = hyp_assign_phys(phys, size, srcVM, 1, destVM, destVMperm, 1);
 	if (ret)
-		pr_err("failed hyp_assign for %pa address of size %zx - subsys VMid %d rc:%d\n", &phys, size, vmid, ret);
+		pr_err("failed hyp_assign for %pa address\t"
+			" of size %zx - subsys VMid %d rc:%d\n",
+				&phys, size, vmid, ret);
 
 	if (vm->ext_region_supported) {
 		if (!is_system_vm) {
@@ -465,8 +472,10 @@ int gh_reclaim_mem(struct gh_vm *vm, phys_addr_t phys,
 		ret |= hyp_assign_phys(vm->ext_region->ext_phys,
 					vm->ext_region->ext_size, srcVM, 1, destVM, destVMperm, 1);
 		if (ret)
-			pr_err("failed hyp_assign for %pa address of size %zx - subsys VMid %d rc:%d\n", &vm->ext_region->ext_phys,
-				vm->ext_region->ext_size, vmid, ret);
+			pr_err("failed hyp_assign for %pa address\t"
+				" of size %zx - subsys VMid %d rc:%d\n",
+					&vm->ext_region->ext_phys,
+					vm->ext_region->ext_size, vmid, ret);
 	}
 	return ret;
 }
@@ -527,7 +536,9 @@ int gh_provide_mem(struct gh_vm *vm, phys_addr_t phys,
 			acl_desc, sgl_desc, NULL, &vm->mem_handle);
 	} else {
 		if (vm->ext_region_supported)
-			ret = gh_rm_mem_lend(GH_RM_MEM_TYPE_NORMAL, 0, vm->ext_region->ext_label, acl_desc,	sgl_desc, NULL, &vm->ext_region->ext_mem_handle);
+			ret = gh_rm_mem_lend(GH_RM_MEM_TYPE_NORMAL, 0,
+					vm->ext_region->ext_label, acl_desc,
+					sgl_desc, NULL, &vm->ext_region->ext_mem_handle);
 		else
 			ret = gh_rm_mem_lend(GH_RM_MEM_TYPE_NORMAL, 0, 0, acl_desc,
 					sgl_desc, NULL, &vm->mem_handle);
@@ -657,7 +668,8 @@ static int gh_vm_release(struct inode *inode, struct file *filp)
 {
 	struct gh_vm *vm = filp->private_data;
 
-	gh_put_vm(vm);
+	if (!vm->keep_running)
+		gh_put_vm(vm);
 	return 0;
 }
 

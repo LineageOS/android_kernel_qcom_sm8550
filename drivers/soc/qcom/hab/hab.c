@@ -137,7 +137,7 @@ static void hab_ctx_free_fn(struct uhab_context *ctx)
 	int ret = 0;
 
 	/* garbage-collect exp/imp buffers */
-	write_lock_bh(&ctx->exp_lock);
+	write_lock(&ctx->exp_lock);
 	list_for_each_entry_safe(exp, exp_tmp, &ctx->exp_whse, node) {
 		list_del(&exp->node);
 		exp_super = container_of(exp, struct export_desc_super, exp);
@@ -152,12 +152,18 @@ static void hab_ctx_free_fn(struct uhab_context *ctx)
 			pr_debug("potential leak exp %d vcid %X recovered\n",
 					exp->export_id, exp->vcid_local);
 			habmem_hyp_revoke(exp->payload, exp->payload_count);
-			write_unlock_bh(&ctx->exp_lock);
+			write_unlock(&ctx->exp_lock);
+
+			pchan = exp->pchan;
+			hab_spin_lock(&pchan->expid_lock, irqs_disabled);
+			idr_remove(&pchan->expid_idr, exp->export_id);
+			hab_spin_unlock(&pchan->expid_lock, irqs_disabled);
+
 			habmem_remove_export(exp);
-			write_lock_bh(&ctx->exp_lock);
+			write_lock(&ctx->exp_lock);
 		}
 	}
-	write_unlock_bh(&ctx->exp_lock);
+	write_unlock(&ctx->exp_lock);
 
 	spin_lock_bh(&ctx->imp_lock);
 	list_for_each_entry_safe(exp, exp_tmp, &ctx->imp_whse, node) {
@@ -175,7 +181,11 @@ static void hab_ctx_free_fn(struct uhab_context *ctx)
 				HAB_HEADER_SET_SIZE(header, sizeof(uint32_t));
 				HAB_HEADER_SET_ID(header, HAB_VCID_UNIMPORT);
 				HAB_HEADER_SET_SESSION_ID(header, HAB_SESSIONID_UNIMPORT);
-				physical_channel_send(exp->pchan, &header, &exp->export_id);
+				ret = physical_channel_send(exp->pchan, &header, &exp->export_id,
+						HABMM_SOCKET_SEND_FLAGS_NON_BLOCKING);
+				if (ret != 0)
+					pr_err("failed to send unimp msg %d, vcid %d, exp id %d\n",
+						ret, exp->vcid_local, exp->export_id);
 			} else
 				pr_err("exp id %d unmap fail on vcid %X\n",
 					exp->export_id, exp->vcid_local);
@@ -644,7 +654,7 @@ long hab_vchan_send(struct uhab_context *ctx,
 	struct virtual_channel *vchan;
 	int ret;
 	struct hab_header header = HAB_HEADER_INITIALIZER;
-	int nonblocking_flag = flags & HABMM_SOCKET_SEND_FLAGS_NON_BLOCKING;
+	unsigned int nonblocking_flag = flags & HABMM_SOCKET_SEND_FLAGS_NON_BLOCKING;
 
 	if (sizebytes > (size_t)HAB_HEADER_SIZE_MAX) {
 		pr_err("Message too large, %lu bytes, max is %d\n",
@@ -657,6 +667,16 @@ long hab_vchan_send(struct uhab_context *ctx,
 		ret = -ENODEV;
 		goto err;
 	}
+
+	/**
+	 * Without non-blocking configured, when the shared memory (vdev-shmem project) or
+	 * vh_buf_header (virtio-hab project) used by HAB for front-end and back-end messaging
+	 * is exhausted, the current path will be blocked.
+	 * 1. The vdev-shmem project will be blocked in the hab_vchan_send function;
+	 * 2. The virtio-hab project will be blocked in the hab_physical_send function;
+	 */
+	if (!nonblocking_flag)
+		might_sleep();
 
 	/* log msg send timestamp: enter hab_vchan_send */
 	trace_hab_vchan_send_start(vchan);
@@ -697,7 +717,7 @@ long hab_vchan_send(struct uhab_context *ctx,
 	HAB_HEADER_SET_SESSION_ID(header, vchan->session_id);
 
 	while (1) {
-		ret = physical_channel_send(vchan->pchan, &header, data);
+		ret = physical_channel_send(vchan->pchan, &header, data, nonblocking_flag);
 
 		if (vchan->otherend_closed || nonblocking_flag ||
 			ret != -EAGAIN)
@@ -711,7 +731,7 @@ long hab_vchan_send(struct uhab_context *ctx,
 	 * from the hab_vchan_send()'s perspective.
 	 */
 	if (!ret)
-		vchan->tx_cnt++;
+		atomic64_inc(&vchan->tx_cnt);
 err:
 
 	/* log msg send timestamp: exit hab_vchan_send */
@@ -762,7 +782,7 @@ int hab_vchan_recv(struct uhab_context *ctx,
 		 * hab_vchan_recv()'s view w/ the ret as 0 and *message as
 		 * non-zero.
 		 */
-		vchan->rx_cnt++;
+		atomic64_inc(&vchan->rx_cnt);
 	}
 
 	vchan->rx_inflight = 0;
@@ -848,26 +868,36 @@ int hab_vchan_open(struct uhab_context *ctx,
 void hab_send_close_msg(struct virtual_channel *vchan)
 {
 	struct hab_header header = HAB_HEADER_INITIALIZER;
+	int ret = 0;
 
 	if (vchan && !vchan->otherend_closed) {
 		HAB_HEADER_SET_SIZE(header, 0);
 		HAB_HEADER_SET_TYPE(header, HAB_PAYLOAD_TYPE_CLOSE);
 		HAB_HEADER_SET_ID(header, vchan->otherend_id);
 		HAB_HEADER_SET_SESSION_ID(header, vchan->session_id);
-		physical_channel_send(vchan->pchan, &header, NULL);
+		ret = physical_channel_send(vchan->pchan, &header, NULL,
+				HABMM_SOCKET_SEND_FLAGS_NON_BLOCKING);
+		if (ret != 0)
+			pr_err("failed to send close msg %d, vcid %x\n",
+				ret, vchan->id);
 	}
 }
 
 void hab_send_unimport_msg(struct virtual_channel *vchan, uint32_t exp_id)
 {
 	struct hab_header header = HAB_HEADER_INITIALIZER;
+	int ret = 0;
 
 	if (vchan) {
 		HAB_HEADER_SET_SIZE(header, sizeof(uint32_t));
 		HAB_HEADER_SET_TYPE(header, HAB_PAYLOAD_TYPE_UNIMPORT);
 		HAB_HEADER_SET_ID(header, vchan->otherend_id);
 		HAB_HEADER_SET_SESSION_ID(header, vchan->session_id);
-		physical_channel_send(vchan->pchan, &header, &exp_id);
+		ret = physical_channel_send(vchan->pchan, &header, &exp_id,
+				HABMM_SOCKET_SEND_FLAGS_NON_BLOCKING);
+		if (ret != 0)
+			pr_err("failed to send unimp msg %d, vcid %x\n",
+				ret, vchan->id);
 	}
 }
 

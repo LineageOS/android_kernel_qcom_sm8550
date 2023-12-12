@@ -670,6 +670,7 @@ static int qcom_glink_send_rx_done(struct qcom_glink *glink,
 	unsigned int iid = intent->id;
 	bool reuse = intent->reuse;
 	int ret;
+	unsigned long flags;
 
 	cmd.id = reuse ? RPM_CMD_RX_DONE_W_REUSE : RPM_CMD_RX_DONE;
 	cmd.lcid = cid;
@@ -686,6 +687,9 @@ static int qcom_glink_send_rx_done(struct qcom_glink *glink,
 	ret = intent->offset;
 
 	if (!reuse) {
+		spin_lock_irqsave(&channel->intent_lock, flags);
+		idr_remove(&channel->liids, intent->id);
+		spin_unlock_irqrestore(&channel->intent_lock, flags);
 		kfree(intent->data);
 		kfree(intent);
 	}
@@ -726,13 +730,6 @@ static void __qcom_glink_rx_done(struct qcom_glink *glink,
 		kfree(intent->data);
 		kfree(intent);
 		return;
-	}
-
-	/* Take it off the tree of receive intents */
-	if (!intent->reuse) {
-		spin_lock_irqsave(&channel->intent_lock, flags);
-		idr_remove(&channel->liids, intent->id);
-		spin_unlock_irqrestore(&channel->intent_lock, flags);
 	}
 
 	spin_lock_irqsave(&channel->intent_lock, flags);
