@@ -757,7 +757,7 @@ static void slate_coredump(struct rproc *rproc)
 	slate_tz_req.address_fw = start_addr;
 	slate_tz_req.size_fw = size;
 	ret = slate_tzapp_comm(slate_data, &slate_tz_req);
-	if (ret != 0) {
+	if (ret != 0 || slate_data->cmd_status) {
 		dev_dbg(slate_data->dev,
 			"%s: SLATE RPROC ramdmp collection failed\n",
 			__func__);
