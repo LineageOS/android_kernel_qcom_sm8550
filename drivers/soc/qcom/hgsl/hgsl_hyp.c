@@ -2202,6 +2202,19 @@ int hgsl_hyp_get_dbq_info(struct hgsl_hyp_priv_t *priv, uint32_t dbq_idx,
 		LOGE("gsl_rpc_read_uint32_l failed, %d", ret);
 		goto out;
 	}
+	ret = gsl_rpc_read_uint64_l(recv_buf, &dbq_info->gmuaddr);
+	if (ret)
+		LOGW("gsl_rpc_read_uint64_l failed, %d", ret);
+	else {
+		ret = gsl_rpc_read_uint32_l(recv_buf,
+					&dbq_info->ibdesc_max_size);
+		if (ret)
+			LOGW("gsl_rpc_read_uint32_l failed, %d", ret);
+	}
+	if (ret) {
+		dbq_info->ibdesc_max_size = 0;
+		ret = 0;
+	}
 	dbq_info->size = (dbq_info->size + (0x1000 - 1)) & (~(0x1000 - 1));
 	ret = habmm_import(hab_channel->socket,
 		(void **)&dma_buf, dbq_info->size,
