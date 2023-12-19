@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
- * Copyright (c) 2022, Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2023, Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #include <linux/module.h>
@@ -73,7 +73,7 @@ static int scm_qcpe_hab_send_receive(struct smc_params_s *smc_params,
 		*size_bytes = sizeof(*smc_params);
 		ret = habmm_socket_recv(handle, smc_params, size_bytes, 0,
 					HABMM_SOCKET_RECV_FLAGS_UNINTERRUPTIBLE);
-	} while (-EINTR == ret);
+	} while (-EAGAIN == ret);
 
 	if (ret) {
 		pr_err("habmm_socket_recv failed, ret= 0x%x\n", ret);
