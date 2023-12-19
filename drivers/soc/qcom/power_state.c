@@ -124,6 +124,7 @@ static int subsys_suspend(struct subsystem_data *ss_data, struct rproc *rproc, u
 	case SUBSYS_DEEPSLEEP:
 	case SUBSYS_HIBERNATE:
 		ss_data->ignore_ssr = true;
+		adsp_set_ops_stop(rproc, true);
 		rproc_shutdown(rproc);
 		ss_data->ignore_ssr = false;
 		break;
@@ -144,6 +145,7 @@ static int subsys_resume(struct subsystem_data *ss_data, struct rproc *rproc, u3
 	case SUBSYS_DEEPSLEEP:
 	case SUBSYS_HIBERNATE:
 		ss_data->ignore_ssr = true;
+		adsp_set_ops_stop(rproc, false);
 		ret = rproc_boot(rproc);
 		ss_data->ignore_ssr = false;
 		break;
