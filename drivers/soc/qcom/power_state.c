@@ -573,6 +573,12 @@ static int power_state_probe(struct platform_device *pdev)
 	if (!drv)
 		return -ENOMEM;
 
+	if (IS_ENABLED(CONFIG_NOTIFY_AOP)) {
+		drv->qmp = qmp_get(&pdev->dev);
+		if (IS_ERR(drv->qmp))
+			return -EPROBE_DEFER;
+	}
+
 	drv->ps_pm_nb.notifier_call = ps_pm_cb;
 	drv->ps_pm_nb.priority = PS_PM_NOTIFIER_PRIORITY;
 	ret = register_pm_notifier(&drv->ps_pm_nb);
@@ -601,7 +607,7 @@ static int power_state_probe(struct platform_device *pdev)
 			goto remove_ss;
 		}
 
-		ss_data->name = name;
+		ss_data->name = kstrdup_const(name, GFP_KERNEL);
 		ss_data->rproc_handle = rproc_handle;
 
 		ss_data->ps_ssr_nb.notifier_call = ps_ssr_cb;
@@ -625,14 +631,6 @@ static int power_state_probe(struct platform_device *pdev)
 		}
 
 		list_add_tail(&ss_data->list, &drv->sub_sys_list);
-	}
-
-	if (IS_ENABLED(CONFIG_NOTIFY_AOP)) {
-		drv->qmp = qmp_get(&pdev->dev);
-		if (IS_ERR(drv->qmp)) {
-			ret = PTR_ERR(drv->qmp);
-			goto remove_ss;
-		}
 	}
 
 	ret = power_state_dev_init(drv);
