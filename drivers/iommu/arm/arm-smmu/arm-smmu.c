@@ -4136,12 +4136,6 @@ static int __maybe_unused arm_smmu_pm_freeze_late(struct device *dev)
 	struct arm_smmu_cb *cb;
 	int idx, ret;
 
-	ret = arm_smmu_runtime_resume(dev);
-	if (ret) {
-		dev_err(dev, "Failed to Resume:%d\n", ret);
-		return ret;
-	}
-
 	for (idx = 0; idx < smmu->num_context_banks; idx++) {
 		cb = &smmu->cbs[idx];
 		if (cb && cb->cfg) {
