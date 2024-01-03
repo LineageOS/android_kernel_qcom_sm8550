@@ -11,6 +11,40 @@ unsigned int get_refcnt(struct kref ref)
 	return kref_read(&ref);
 }
 
+static void hab_ctx_free_work_fn(struct work_struct *work)
+{
+	struct uhab_context *ctx =
+		container_of(work, struct uhab_context, destroy_work);
+
+	hab_ctx_free_fn(ctx);
+}
+
+/*
+ * ctx can only be freed after all the vchan releases the refcnt
+ * and hab_release() is called.
+ *
+ * this function might be called in atomic context in following situations
+ * (only applicable to Linux):
+ * 1. physical_channel_rx_dispatch()->hab_msg_recv()->hab_vchan_put()
+ * ->hab_ctx_put()->hab_ctx_free() in tasklet.
+ * 2. hab client holds spin_lock and calls hab_vchan_close()->hab_vchan_put()
+ * ->hab_vchan_free()->hab_ctx_free().
+ */
+void hab_ctx_free_os(struct kref *ref)
+{
+	struct uhab_context *ctx =
+		container_of(ref, struct uhab_context, refcount);
+
+	if (likely(preemptible())) {
+		hab_ctx_free_fn(ctx);
+	} else {
+		pr_info("In non-preemptive context now, ctx owner %d\n",
+			ctx->owner);
+		INIT_WORK(&ctx->destroy_work, hab_ctx_free_work_fn);
+		schedule_work(&ctx->destroy_work);
+	}
+}
+
 static int hab_open(struct inode *inodep, struct file *filep)
 {
 	int result = 0;
@@ -312,10 +346,9 @@ static int hab_power_down_callback(
 	case SYS_HALT:
 	case SYS_POWER_OFF:
 		pr_debug("reboot called %ld\n", action);
-		hab_hypervisor_unregister(); /* only for single VM guest */
 		break;
 	}
-	pr_debug("reboot called %ld done\n", action);
+	pr_info("reboot called %ld done\n", action);
 	return NOTIFY_DONE;
 }
 
