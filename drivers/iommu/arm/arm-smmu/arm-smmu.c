@@ -453,14 +453,14 @@ static int __arm_smmu_alloc_cb(unsigned long *map, int start, int end,
 {
 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
 	struct arm_smmu_master_cfg *cfg = dev_iommu_priv_get(dev);
-	struct arm_smmu_device *smmu = cfg->smmu;
+	struct arm_smmu_device *smmu;
 	int idx;
 	int i;
 	int cb = -EINVAL;
 
 	if (!fwspec || !cfg)
 		return cb;
-
+	smmu = cfg->smmu;
 	for_each_cfg_sme(cfg, fwspec, i, idx) {
 		if (smmu->s2crs[idx].pinned)
 			cb = smmu->s2crs[idx].cbndx;
