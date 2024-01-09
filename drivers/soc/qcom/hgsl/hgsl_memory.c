@@ -618,3 +618,16 @@ struct hgsl_mem_node *hgsl_mem_find_base_locked(struct list_head *head,
 	return node_found;
 }
 
+void *hgsl_mem_node_zalloc(bool iocoherency)
+{
+	struct hgsl_mem_node *mem_node = NULL;
+
+	mem_node = hgsl_zalloc(sizeof(*mem_node));
+	if (mem_node == NULL)
+		goto out;
+
+	mem_node->default_iocoherency = iocoherency;
+
+out:
+	return mem_node;
+}

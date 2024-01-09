@@ -2552,6 +2552,7 @@ out:
 static int read_shadowts_mem_be(struct hgsl_hab_channel_t *hab_channel,
 				struct hgsl_context *ctxt)
 {
+	struct qcom_hgsl *hgsl = ctxt->priv->dev;
 	struct gsl_hab_payload *recv_buf = &hab_channel->recv_buf;
 	uint32_t export_id = 0;
 	struct hgsl_mem_node *mem_node = NULL;
@@ -2570,7 +2571,7 @@ static int read_shadowts_mem_be(struct hgsl_hab_channel_t *hab_channel,
 	}
 
 	if (rpc_shadow.flags & GSL_FLAGS_INITIALIZED) {
-		mem_node = hgsl_zalloc(sizeof(*mem_node));
+		mem_node = hgsl_mem_node_zalloc(hgsl->default_iocoherency);
 		if (mem_node == NULL) {
 			ret = -ENOMEM;
 			goto out;
@@ -2619,6 +2620,7 @@ int hgsl_hyp_ctxt_create_v1(struct device *dev,
 {
 	struct hgsl_mem_node *mem_node = NULL;
 	struct gsl_hab_payload *recv_buf = NULL;
+	struct qcom_hgsl *hgsl = priv->dev;
 	int ret = 0;
 	int rval = GSL_SUCCESS;
 
@@ -2638,7 +2640,7 @@ int hgsl_hyp_ctxt_create_v1(struct device *dev,
 	}
 	recv_buf = &hab_channel->recv_buf;
 
-	mem_node = hgsl_zalloc(sizeof(*mem_node));
+	mem_node = hgsl_mem_node_zalloc(hgsl->default_iocoherency);
 	if (mem_node == NULL) {
 		ret = -ENOMEM;
 		goto out;
