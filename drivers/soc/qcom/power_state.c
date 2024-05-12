@@ -9,6 +9,7 @@
 #include <linux/arm-smccc.h>
 #include <linux/cdev.h>
 #include <linux/compat.h>
+#include <linux/delay.h>
 #include <linux/device.h>
 #include <linux/errno.h>
 #include <linux/fs.h>
@@ -26,6 +27,7 @@
 #include <linux/sysfs.h>
 #include <linux/uaccess.h>
 #include <soc/qcom/rpm-smd.h>
+#include <soc/qcom/subsystem_sleep_stats.h>
 #include <linux/soc/qcom/qcom_aoss.h>
 
 #include "linux/power_state.h"
@@ -56,6 +58,8 @@
 #define PS_SSR_NOTIFIER_PRIORITY	0
 
 #define MAX_QMP_MSG_SIZE	96
+#define SUSBSYSTEM_SLEEP_CHECK_MAX_RETRIES	2
+#define DELAY	50
 
 enum power_states {
 	ACTIVE,
@@ -191,6 +195,23 @@ static int subsystem_suspend(struct power_state_drvdata *drv, u32 state)
 	struct subsystem_data *ss_data;
 	int ret = 0;
 	struct rproc *rproc = NULL;
+#if IS_ENABLED(CONFIG_QCOM_DS_SKIP_Q6_STOP)
+	bool subsys_sleep_status;
+	int i;
+
+	for (i = 0; i < SUSBSYSTEM_SLEEP_CHECK_MAX_RETRIES; i++) {
+		subsys_sleep_status = current_subsystem_sleep();
+		if (subsys_sleep_status)
+			break;
+		pr_err("subsytems are not in sleep retrying.....\n");
+		msleep(DELAY);
+	}
+
+	if (i == SUSBSYSTEM_SLEEP_CHECK_MAX_RETRIES) {
+		pr_err("Error: still subsystems are not in sleep\n");
+		BUG();
+	}
+#endif
 
 	list_for_each_entry(ss_data, &drv->sub_sys_list, list) {
 		pr_info("%s subsystem suspend start\n", ss_data->name);
