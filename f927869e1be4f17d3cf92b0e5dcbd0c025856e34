@@ -16,6 +16,41 @@
       "message": "Should we do a fixup for this or amend this commit to fix this?\n\nhttps://gist.github.com/ThEMarD/ac8007bd0f3027e9676491a37dc72efa\n\nFrom what I see, we need to do this:\n\ndiff --git a/drivers/bus/mhi/host/misc.c b/drivers/bus/mhi/host/misc.c\nindex 06c29927a302..3b0f778c10d4 100644\n--- a/drivers/bus/mhi/host/misc.c\n+++ b/drivers/bus/mhi/host/misc.c\n@@ -1274,7 +1274,7 @@ int mhi_process_misc_tsync_ev_ring(struct mhi_controller *mhi_cntrl,\n                                   struct mhi_event *mhi_event,\n                                   u32 event_quota)\n {\n-       struct mhi_tre *dev_rp;\n+       struct mhi_ring_element *dev_rp;\n        struct mhi_ring *ev_ring \u003d \u0026mhi_event-\u003ering;\n        struct mhi_event_ctxt *er_ctxt \u003d\n                \u0026mhi_cntrl-\u003emhi_ctxt-\u003eer_ctxt[mhi_event-\u003eer_index];\n@@ -1384,7 +1384,7 @@ int mhi_process_misc_bw_ev_ring(struct mhi_controller *mhi_cntrl,\n                                struct mhi_event *mhi_event,\n                                u32 event_quota)\n {\n-       struct mhi_tre *dev_rp;\n+       struct mhi_ring_element *dev_rp;\n        struct mhi_ring *ev_ring \u003d \u0026mhi_event-\u003ering;\n        struct mhi_event_ctxt *er_ctxt \u003d\n                \u0026mhi_cntrl-\u003emhi_ctxt-\u003eer_ctxt[mhi_event-\u003eer_index];",
       "revId": "f927869e1be4f17d3cf92b0e5dcbd0c025856e34",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "788d443e_8196e683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-05-16T17:14:52Z",
+      "side": 1,
+      "message": "Adding",
+      "revId": "f927869e1be4f17d3cf92b0e5dcbd0c025856e34",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2546fd45_6463c05e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-05-16T17:14:52Z",
+      "side": 1,
+      "message": "I have that locally, but didn\u0027t push it yet... mainly because my device was crashing with kernel compiled with this merge.",
+      "parentUuid": "c7e9296a_216e570b",
+      "revId": "f927869e1be4f17d3cf92b0e5dcbd0c025856e34",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
