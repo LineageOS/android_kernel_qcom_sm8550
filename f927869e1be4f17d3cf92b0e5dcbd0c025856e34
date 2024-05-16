@@ -51,6 +51,24 @@
       "parentUuid": "c7e9296a_216e570b",
       "revId": "f927869e1be4f17d3cf92b0e5dcbd0c025856e34",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23526a1_4e882d5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2024-05-16T17:16:00Z",
+      "side": 1,
+      "message": "I just tried a build too and it\u0027s also bootlooping for me unfortunately",
+      "parentUuid": "2546fd45_6463c05e",
+      "revId": "f927869e1be4f17d3cf92b0e5dcbd0c025856e34",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
