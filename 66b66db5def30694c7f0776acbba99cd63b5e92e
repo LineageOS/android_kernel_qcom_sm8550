@@ -16,6 +16,24 @@
       "message": "This one is bad. Besides bringing back the USB tethering crash I also found it causes some ANR frequently.",
       "revId": "66b66db5def30694c7f0776acbba99cd63b5e92e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b0bfb0_28ab567d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22465
+      },
+      "writtenOn": "2024-05-25T21:52:13Z",
+      "side": 1,
+      "message": "https://github.com/danielml3/android_kernel_xiaomi_socrates/commit/97ea00710fc53d5851012bb51fee5c0c79745905\n\nCheck if this solves it, I faced some freezes but after that revert it seems fine.",
+      "parentUuid": "2634ad17_32bf2791",
+      "revId": "66b66db5def30694c7f0776acbba99cd63b5e92e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
