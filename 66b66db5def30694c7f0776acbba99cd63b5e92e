@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2634ad17_32bf2791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-05-25T07:37:45Z",
+      "side": 1,
+      "message": "This one is bad. Besides bringing back the USB tethering crash I also found it causes some ANR frequently.",
+      "revId": "66b66db5def30694c7f0776acbba99cd63b5e92e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
