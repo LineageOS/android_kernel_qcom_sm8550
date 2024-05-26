@@ -134039,6 +134039,14 @@
         <parameter type-id='d8e6b335' name='can_fixup' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
         <return type-id='95e97e5e'/>
       </function-decl>
+      <function-decl name='__traceiter_android_vh_try_fixup_sea' mangled-name='__traceiter_android_vh_try_fixup_sea' filepath='include/trace/hooks/fault.h' line='37' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='__traceiter_android_vh_try_fixup_sea'>
+        <parameter type-id='eaa32e2f' name='__data' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
+        <parameter type-id='7359adad' name='addr' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
+        <parameter type-id='7359adad' name='esr' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
+        <parameter type-id='4616a179' name='regs' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
+        <parameter type-id='d8e6b335' name='can_fixup' filepath='include/trace/hooks/fault.h' line='37' column='1'/>
+        <return type-id='95e97e5e'/>
+      </function-decl>
       <function-decl name='__traceiter_android_vh_try_to_freeze_todo' mangled-name='__traceiter_android_vh_try_to_freeze_todo' filepath='include/trace/hooks/power.h' line='19' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='__traceiter_android_vh_try_to_freeze_todo'>
         <parameter type-id='eaa32e2f' name='__data' filepath='include/trace/hooks/power.h' line='19' column='1'/>
         <parameter type-id='f0981eeb' name='todo' filepath='include/trace/hooks/power.h' line='19' column='1'/>
@@ -148397,24 +148405,24 @@
         <parameter type-id='95e97e5e' name='id' filepath='drivers/interconnect/core.c' line='825' column='1'/>
         <return type-id='18d76f87'/>
       </function-decl>
-      <function-decl name='icc_node_del' mangled-name='icc_node_del' filepath='drivers/interconnect/core.c' line='1007' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_node_del'>
-        <parameter type-id='18d76f87' name='node' filepath='drivers/interconnect/core.c' line='1007' column='1'/>
+      <function-decl name='icc_node_del' mangled-name='icc_node_del' filepath='drivers/interconnect/core.c' line='1004' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_node_del'>
+        <parameter type-id='18d76f87' name='node' filepath='drivers/interconnect/core.c' line='1004' column='1'/>
         <return type-id='48b5725f'/>
       </function-decl>
       <function-decl name='icc_node_destroy' mangled-name='icc_node_destroy' filepath='drivers/interconnect/core.c' line='843' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_node_destroy'>
         <parameter type-id='95e97e5e' name='id' filepath='drivers/interconnect/core.c' line='843' column='1'/>
         <return type-id='48b5725f'/>
       </function-decl>
-      <function-decl name='icc_nodes_remove' mangled-name='icc_nodes_remove' filepath='drivers/interconnect/core.c' line='1023' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_nodes_remove'>
-        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1023' column='1'/>
+      <function-decl name='icc_nodes_remove' mangled-name='icc_nodes_remove' filepath='drivers/interconnect/core.c' line='1020' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_nodes_remove'>
+        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1020' column='1'/>
         <return type-id='95e97e5e'/>
       </function-decl>
-      <function-decl name='icc_provider_add' mangled-name='icc_provider_add' filepath='drivers/interconnect/core.c' line='1045' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_provider_add'>
-        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1045' column='1'/>
+      <function-decl name='icc_provider_add' mangled-name='icc_provider_add' filepath='drivers/interconnect/core.c' line='1042' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_provider_add'>
+        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1042' column='1'/>
         <return type-id='95e97e5e'/>
       </function-decl>
-      <function-decl name='icc_provider_del' mangled-name='icc_provider_del' filepath='drivers/interconnect/core.c' line='1071' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_provider_del'>
-        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1071' column='1'/>
+      <function-decl name='icc_provider_del' mangled-name='icc_provider_del' filepath='drivers/interconnect/core.c' line='1068' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_provider_del'>
+        <parameter type-id='e68dc824' name='provider' filepath='drivers/interconnect/core.c' line='1068' column='1'/>
         <return type-id='95e97e5e'/>
       </function-decl>
       <function-decl name='icc_put' mangled-name='icc_put' filepath='drivers/interconnect/core.c' line='767' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_put'>
@@ -148441,8 +148449,8 @@
         <parameter type-id='f9409001' name='agg_peak' filepath='drivers/interconnect/core.c' line='313' column='1'/>
         <return type-id='95e97e5e'/>
       </function-decl>
-      <function-decl name='icc_sync_state' mangled-name='icc_sync_state' filepath='drivers/interconnect/core.c' line='1114' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_sync_state'>
-        <parameter type-id='fa0b179b' name='dev' filepath='drivers/interconnect/core.c' line='1114' column='1'/>
+      <function-decl name='icc_sync_state' mangled-name='icc_sync_state' filepath='drivers/interconnect/core.c' line='1111' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icc_sync_state'>
+        <parameter type-id='fa0b179b' name='dev' filepath='drivers/interconnect/core.c' line='1111' column='1'/>
         <return type-id='48b5725f'/>
       </function-decl>
       <function-decl name='icmp6_send' mangled-name='icmp6_send' filepath='net/ipv6/icmp.c' line='451' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='icmp6_send'>
@@ -164838,6 +164846,11 @@
       <function-decl name='unlock_rename' mangled-name='unlock_rename' filepath='fs/namei.c' line='3069' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='unlock_rename'>
         <parameter type-id='27675065' name='p1' filepath='fs/namei.c' line='3069' column='1'/>
         <parameter type-id='27675065' name='p2' filepath='fs/namei.c' line='3069' column='1'/>
+        <return type-id='48b5725f'/>
+      </function-decl>
+      <function-decl name='unlock_rename' mangled-name='unlock_rename' filepath='fs/namei.c' line='2993' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='unlock_rename'>
+        <parameter type-id='27675065' name='p1' filepath='fs/namei.c' line='2993' column='1'/>
+        <parameter type-id='27675065' name='p2' filepath='fs/namei.c' line='2993' column='1'/>
         <return type-id='48b5725f'/>
       </function-decl>
       <function-decl name='unmap_mapping_range' mangled-name='unmap_mapping_range' filepath='mm/memory.c' line='3637' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='unmap_mapping_range'>
