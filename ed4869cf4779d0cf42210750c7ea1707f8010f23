@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8685f8_67fc451a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2024-05-30T10:59:47Z",
+      "side": 1,
+      "message": "seems fine on rtwo for USB tethering and haven\u0027t noticed any ANR",
+      "revId": "ed4869cf4779d0cf42210750c7ea1707f8010f23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
