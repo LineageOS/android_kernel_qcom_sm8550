@@ -16,6 +16,23 @@
       "message": "All good here on OnePlus 11. Let me know once you test this.",
       "revId": "9f19bed3f5232ec25de717496f9e26cd5d4d27a3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a3fbc3_d6b0f45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2024-08-09T13:35:16Z",
+      "side": 1,
+      "message": "Tested on sony sm8550",
+      "revId": "9f19bed3f5232ec25de717496f9e26cd5d4d27a3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
