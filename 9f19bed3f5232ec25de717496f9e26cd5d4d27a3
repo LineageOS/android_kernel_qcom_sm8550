@@ -33,6 +33,23 @@
       "message": "Tested on sony sm8550",
       "revId": "9f19bed3f5232ec25de717496f9e26cd5d4d27a3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee9b0dc_38d6d743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22465
+      },
+      "writtenOn": "2024-08-10T09:53:06Z",
+      "side": 1,
+      "message": "Seems fine in socrates",
+      "revId": "9f19bed3f5232ec25de717496f9e26cd5d4d27a3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
