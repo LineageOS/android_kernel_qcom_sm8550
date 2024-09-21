@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a8dc36_6637898a",
+        "filename": "drivers/net/ethernet/stmicro/stmmac/dwxgmac2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 22176
+      },
+      "writtenOn": "2024-09-21T19:39:17Z",
+      "side": 1,
+      "message": "merge conflict?",
+      "revId": "550678f8de1a268ea42cbfd1fcd58037a35b0c24",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
