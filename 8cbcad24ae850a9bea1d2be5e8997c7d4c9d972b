@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27414000_0af277e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-10-08T21:25:24Z",
+      "side": 1,
+      "message": "https://git.codelinaro.org/clo/la/kernel/msm-5.15/-/commit/79638222d8952ba0fa949701bce4cd952b7a438a introduces a breakage when it comes to the compilation of camera-kernel modules. I have fixed it locally (https://katb.in/vuqitarojut), but suposedly there should be a commit from qti to address it. Let me know if someone finds it.",
+      "revId": "8cbcad24ae850a9bea1d2be5e8997c7d4c9d972b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
