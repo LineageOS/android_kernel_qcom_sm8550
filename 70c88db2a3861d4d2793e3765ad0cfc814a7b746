@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b512d52_e8cafd44",
+        "filename": "drivers/rpmsg/qcom_glink_native.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 34167
+      },
+      "writtenOn": "2025-01-11T15:47:05Z",
+      "side": 0,
+      "message": "Prefix change of RPM_ to GLINK_ doesn\u0027t applied here and line 1457.\nAre these removed on upstream?",
+      "range": {
+        "startLine": 745,
+        "startChar": 18,
+        "endLine": 745,
+        "endChar": 41
+      },
+      "revId": "70c88db2a3861d4d2793e3765ad0cfc814a7b746",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
