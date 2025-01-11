@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964b9a0a_bf805571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-01-11T19:29:03Z",
+      "side": 1,
+      "message": "Please try this out. It /might/ introduce a breaking change for your kernels - https://review.lineageos.org/c/LineageOS/android_kernel_oneplus_sm8550/+/415081, please check.",
+      "revId": "26ac49b087cfa23a7b910fee588bac540c2c0fe1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
