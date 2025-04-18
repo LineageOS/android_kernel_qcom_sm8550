@@ -16,6 +16,24 @@
       "message": "WiFi is dead for me on patch set 2 unfortunately",
       "revId": "bc06ddc9f36c49ccc03ac7e746912c880e37b788",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fb0287_7ccef4d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-18T08:57:23Z",
+      "side": 1,
+      "message": "Patchset 1 too.",
+      "parentUuid": "9b51790a_141d8cb6",
+      "revId": "bc06ddc9f36c49ccc03ac7e746912c880e37b788",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
