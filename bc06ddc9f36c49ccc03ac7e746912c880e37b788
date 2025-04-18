@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b51790a_141d8cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-04-18T07:24:18Z",
+      "side": 1,
+      "message": "WiFi is dead for me on patch set 2 unfortunately",
+      "revId": "bc06ddc9f36c49ccc03ac7e746912c880e37b788",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
