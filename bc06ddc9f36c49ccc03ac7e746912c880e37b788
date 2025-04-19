@@ -34,6 +34,23 @@
       "parentUuid": "9b51790a_141d8cb6",
       "revId": "bc06ddc9f36c49ccc03ac7e746912c880e37b788",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c66bc09_39603dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16908
+      },
+      "writtenOn": "2025-04-19T00:11:39Z",
+      "side": 1,
+      "message": "should be similar to https://github.com/OnePlus-12-Development/android_kernel_oneplus_sm8650/commit/3e0cb08ebf72f9d69626742cbc231dcc20d69e97",
+      "revId": "bc06ddc9f36c49ccc03ac7e746912c880e37b788",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
