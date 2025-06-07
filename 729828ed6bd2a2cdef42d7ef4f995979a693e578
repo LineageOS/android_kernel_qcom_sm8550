@@ -33,6 +33,41 @@
       "message": "https://git.codelinaro.org/clo/la/kernel/msm-5.15/-/blob/KERNEL.PLATFORM.2.0.r1-19900-kernel.0/drivers/spi/spidev.c?ref_type\u003dtags#L699\nQualcomm also has a different list of devices :/",
       "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d500db66_19775126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-06-07T16:09:39Z",
+      "side": 1,
+      "message": "And it really doesn\u0027t use ant",
+      "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb635a8_4ba114e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-06-07T16:09:39Z",
+      "side": 1,
+      "message": "And it really doesn\u0027t use spidev_of_check func",
+      "parentUuid": "74be9689_ed885d88",
+      "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
