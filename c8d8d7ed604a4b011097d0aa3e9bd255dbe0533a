@@ -16,6 +16,24 @@
       "message": "https://android.googlesource.com/kernel/common/+/refs/heads/android13-5.15-lts/drivers/spi/spidev.c#700\nIn googlesource.com this function is still here",
       "revId": "c8d8d7ed604a4b011097d0aa3e9bd255dbe0533a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b628e6_53596d71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-06-07T15:55:38Z",
+      "side": 1,
+      "message": "That should be fine, but why fixup! in the first place if I never merged a commit named \"Bring back the function spidev_of_check\"?",
+      "parentUuid": "609222d1_e0dd4b25",
+      "revId": "c8d8d7ed604a4b011097d0aa3e9bd255dbe0533a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
