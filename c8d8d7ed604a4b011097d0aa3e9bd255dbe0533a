@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609222d1_e0dd4b25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-06-07T15:48:21Z",
+      "side": 1,
+      "message": "https://android.googlesource.com/kernel/common/+/refs/heads/android13-5.15-lts/drivers/spi/spidev.c#700\nIn googlesource.com this function is still here",
+      "revId": "c8d8d7ed604a4b011097d0aa3e9bd255dbe0533a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
