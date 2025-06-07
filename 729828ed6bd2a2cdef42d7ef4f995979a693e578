@@ -16,6 +16,23 @@
       "message": "I think this name is fine.",
       "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74be9689_ed885d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-06-07T16:08:25Z",
+      "side": 1,
+      "message": "https://git.codelinaro.org/clo/la/kernel/msm-5.15/-/blob/KERNEL.PLATFORM.2.0.r1-19900-kernel.0/drivers/spi/spidev.c?ref_type\u003dtags#L699\nQualcomm also has a different list of devices :/",
+      "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
