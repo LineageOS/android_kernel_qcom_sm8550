@@ -109,6 +109,30 @@
       },
       "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590a969b_459c6885",
+        "filename": "drivers/spi/spidev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-06-30T15:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b24a0e2_168bc643",
+      "range": {
+        "startLine": 701,
+        "startChar": 80,
+        "endLine": 701,
+        "endChar": 103
+      },
+      "revId": "729828ed6bd2a2cdef42d7ef4f995979a693e578",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
