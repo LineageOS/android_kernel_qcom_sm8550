@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d43b3d2_9da7232e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14962
+      },
+      "writtenOn": "2025-10-11T12:06:36Z",
+      "side": 1,
+      "message": "merged sony_sm8550 has been booted",
+      "revId": "88f1d47054676e5c8f4d90cc164bd7209e25bd06",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
