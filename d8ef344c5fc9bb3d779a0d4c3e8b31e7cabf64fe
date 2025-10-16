@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7df165_0ef1978f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 29551
+      },
+      "writtenOn": "2025-10-16T15:26:43Z",
+      "side": 1,
+      "message": "This patch aligns checkpoint priorities with the upstream kernel.",
+      "revId": "d8ef344c5fc9bb3d779a0d4c3e8b31e7cabf64fe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
