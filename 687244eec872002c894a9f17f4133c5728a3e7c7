@@ -48,6 +48,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fc0a96_d9770895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-12-07T17:53:49Z",
+      "side": 1,
+      "message": "Can you check the sha1sums for me? I am taking care of something else.",
+      "parentUuid": "dedab365_4141357a",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "687244eec872002c894a9f17f4133c5728a3e7c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eb95e3ca_1d1b40e5",
