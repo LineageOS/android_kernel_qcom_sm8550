@@ -96,6 +96,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c64a126_a2d68651",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 35546
+      },
+      "writtenOn": "2025-12-07T18:11:49Z",
+      "side": 1,
+      "message": "sha1sum is 4b5dda7f8b02a43e58de86096ac094a602ebda17",
+      "parentUuid": "5ef7f3a5_8b11ea3f",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "687244eec872002c894a9f17f4133c5728a3e7c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eb95e3ca_1d1b40e5",
@@ -145,6 +169,23 @@
       "side": 1,
       "message": "There: https://review.lineageos.org/c/LineageOS/android_kernel_qcom_sm8550/+/463771",
       "parentUuid": "99f373a0_4b8ab0e3",
+      "revId": "687244eec872002c894a9f17f4133c5728a3e7c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485ab7c1_e2ce876c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35546
+      },
+      "writtenOn": "2025-12-07T18:11:49Z",
+      "side": 1,
+      "message": "this commit is (4b5dda7f8b02a43e58de86096ac094a602ebda17) SHA",
       "revId": "687244eec872002c894a9f17f4133c5728a3e7c7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
