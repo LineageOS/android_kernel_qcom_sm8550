@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb95e3ca_1d1b40e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35546
+      },
+      "writtenOn": "2025-12-07T16:36:32Z",
+      "side": 1,
+      "message": "Missing this change https://review.lineageos.org/c/LineageOS/android_kernel_qcom_sm8650/+/455898",
+      "revId": "687244eec872002c894a9f17f4133c5728a3e7c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
