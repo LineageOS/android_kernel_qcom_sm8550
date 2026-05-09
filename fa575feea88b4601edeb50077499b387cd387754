@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "affa4dd7_65882b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 29242
+      },
+      "writtenOn": "2026-05-09T00:25:19Z",
+      "side": 1,
+      "message": "Tested on AYN odin2/thor devices (qcs8550)",
+      "revId": "fa575feea88b4601edeb50077499b387cd387754",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
