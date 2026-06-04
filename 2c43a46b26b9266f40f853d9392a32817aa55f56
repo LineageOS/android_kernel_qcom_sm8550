@@ -16,6 +16,23 @@
       "message": "all good on ayn qcs8550",
       "revId": "2c43a46b26b9266f40f853d9392a32817aa55f56",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afca480_b4526398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-06-04T20:28:06Z",
+      "side": 1,
+      "message": "also, with how we\u0027re treating the abi xml in merge conflicts, it /may/ be work just checking it out from the LTS at this point?",
+      "revId": "2c43a46b26b9266f40f853d9392a32817aa55f56",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
