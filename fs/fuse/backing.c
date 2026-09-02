@@ -264,12 +264,11 @@ int fuse_create_open_backing(
 	fuse_entry->bpf = NULL;
 
 	newent = d_splice_alias(inode, entry);
+	inode = NULL;
 	if (IS_ERR(newent)) {
 		err = PTR_ERR(newent);
 		goto out;
 	}
-
-	inode = NULL;
 	entry = newent ? newent : entry;
 	err = finish_open(file, entry, fuse_open_file_backing);
 
@@ -1296,8 +1295,7 @@ struct dentry *fuse_lookup_finalize(struct fuse_bpf_args *fa, struct inode *dir,
 
 		get_fuse_inode(inode)->nodeid = feo->nodeid;
 		ret = d_splice_alias(inode, entry);
-		if (!IS_ERR(ret))
-			inode = NULL;
+		inode = NULL;
 	}
 out:
 	iput(inode);
