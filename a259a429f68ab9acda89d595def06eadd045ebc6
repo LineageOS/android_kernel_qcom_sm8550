@@ -22,6 +22,30 @@
       },
       "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808efef7_5588b54e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-09T17:27:03Z",
+      "side": 1,
+      "message": "Google did this really strange this month. branch for 5.15, empty branches for 6.1 and 6.12, _nothing_ for 5.10 or 6.6.\n\nNo tags.",
+      "parentUuid": "6bcd7a78_8848437f",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
