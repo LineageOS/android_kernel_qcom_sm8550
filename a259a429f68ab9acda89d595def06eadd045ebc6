@@ -46,6 +46,30 @@
       },
       "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c4680d_e821ae81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2026-09-09T18:26:14Z",
+      "side": 1,
+      "message": "It\u0027s not strange, android13-5.15-2026-09 is just a GKI branch which is cut from android13-5.15 and now diverging. This merge shouldn\u0027t have happened otherwise you risk conflicts and you\u0027ll have duplicate commits in history now due to it diverging.",
+      "parentUuid": "808efef7_5588b54e",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
