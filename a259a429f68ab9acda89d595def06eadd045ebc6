@@ -70,6 +70,30 @@
       },
       "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3fd527f_69eb383e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-10T21:25:31Z",
+      "side": 1,
+      "message": "ack for next months.",
+      "parentUuid": "05c4680d_e821ae81",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "a259a429f68ab9acda89d595def06eadd045ebc6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
