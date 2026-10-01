@@ -142,6 +142,7 @@ static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsy
 	struct minidump_region __iomem *ptr;
 	struct minidump_region region;
 	int seg_cnt, i;
+	int ret = 0;
 	dma_addr_t da;
 	size_t size;
 	char *name, *dbg_buf_name = "md_dbg_buf";
@@ -160,11 +161,11 @@ static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsy
 
 	for (i = 0; i < seg_cnt; i++) {
 		memcpy_fromio(&region, ptr + i, sizeof(region));
-		if (region.valid == MD_REGION_VALID) {
-			name = kstrdup(region.name, GFP_KERNEL);
+		if (le32_to_cpu(region.valid) == MD_REGION_VALID) {
+			name = kstrndup(region.name, MAX_REGION_NAME_LENGTH - 1, GFP_KERNEL);
 			if (!name) {
-				iounmap(ptr);
-				return -ENOMEM;
+				ret = -ENOMEM;
+				break;
 			}
 			da = le64_to_cpu(region.address);
 			size = le32_to_cpu(region.size);
@@ -180,7 +181,7 @@ static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsy
 	}
 
 	iounmap(ptr);
-	return 0;
+	return ret;
 }
 
 static void qcom_rproc_minidump(struct rproc *rproc, struct device *md_dev)
